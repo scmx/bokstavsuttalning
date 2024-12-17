@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  user-select: none;
+}
+body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#current_emoji {
+  margin: 0;
+  font-size: clamp(5rem, 50vw, 30rem);
+  line-height: 1;
+}
+@media (max-width: 810px) {
+  #current_emoji {
+    font-size: clamp(5rem, 30vw, 20rem);
+  }
+}
+#current_hint {
+  margin: 0;
+  font-family: monospace;
+  font-size: clamp(1rem, 20vw, 15rem);
+  letter-spacing: 0.25em;
+}
+@media (max-width: 810px) {
+  #current_hint {
+    font-size: clamp(1rem, 15vw, 10rem);
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2em;
+}
+#abc_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 68rem;
+}
+#abc_buttons button {
+  --bgsat: 73%;
+  flex-basis: 5rem;
+  flex-shrink: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.6);
+  border-radius: 0.25rem;
+  background-color: var(--bgcolor);
+}
+@media (max-width: 810px) {
+  #abc_buttons button {
+    flex-basis: 3.7rem;
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 500px) {
+  #abc_buttons {
+    gap: 0.5rem;
+  }
+  #abc_buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2em;
+    height: 2em;
+    padding: 0;
+    line-height: 1;
+    flex-basis: 2em;
+    font-size: 1.5rem;
+  }
+}
+#abc_buttons button[data-type="V"],
+#abc_buttons button[data-type="K"] {
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.6);
+}
+#abc_buttons button:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+#abc_buttons button:active {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2)
+  );
+}
+#abc_buttons button:disabled {
+  --bgsat: 3%;
+}
+#abc_buttons button[data-type="V"] {
+  --bgcolor: hsl(29.89deg var(--bgsat) 51%);
+  color: #fff;
+}
+#abc_buttons button[data-type="K"] {
+  --bgcolor: hsl(210.48deg var(--bgsat) 51%);
+  color: #fff;
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Bokstavsuttalning träna uttal på ord och bokstäver med ljud och bild"
+    />
+    <meta
+      viewport="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="web-app-capable" content="yes" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 16 16'><text x='0' y='14'>🧒</text></svg>"
+    />
+
+    <link rel="manifest" />
+    <script type="module">
+      const manifest = {
+        name: "Bokstavsuttalning",
+        short_name: "A-Ö 🐦",
+        start_url: location.href,
+        id: location.href,
+        display: "fullscreen",
+        description:
+          "Bokstavsuttalning träna uttal på ord och bokstäver med ljud och bild",
+        theme_color: "#000000",
+        background_color: "#ffffff",
+        icons: [
+          {
+            src: document.querySelector("link[rel=icon]").href,
+            type: "image/svg+xml",
+            sizes: "any",
+            purpose: "any",
+          },
+        ],
+      };
+      const encoded = encodeURIComponent(JSON.stringify(manifest));
+      const href = `data:application/manifest+json,${encoded}`;
+      document.querySelector("link[rel=manifest]").href = href;
+    </script>
+
+    <title>Bokstavsuttalning</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1 id="h1_text" data-text="Vilket ord är detta med # bokstäver?"></h1>
+    </header>
+    <template id="words_template" type="text/plain">
+      🍎 Äpple 🐕 Hund 🐈 Katt 🚗 Bil 🚲 Cykel 🏠 Hus 📕 Bok ✏️ Penna 🛏️ Säng ⏰
+      Klocka 🌞 Sol 🌧️ Regn ❄️ Snö 🍞 Bröd 🍰 Tårta ☕ Kaffe 🥛 Mjölk 🍌 Banan
+      🌳 Träd 🌸 Blomma 🌊 Hav 🚪 Dörr 🪑 Stol 🖼️ Tavla 🧸 Nalle 🎨 Färg 💡
+      Lampa ⚽ Boll 🎲 Tärning ✂️ Sax 🧓 Vuxen 🧒 Barn 🏥 Sjukhus 🏪 Affär 📦
+      Paket 📮 Brev 💌 Kärlek 🚒 Brandbil 🚓 Polis 🚑 Ambulans ✈️ Flygplan ⛴️
+      Båt 🚀 Raket 🧳 Resa 🛍️ Shopping 🏖️ Strand ⛰️ Berg 🌈 Regnbåge 🌍 Jorden
+      🪐 Rymd ⚡ Blixt 🔥 Eld 💧 Vatten 🪨 Sten 🦋 Fjäril 🐦 Fågel 🐟 Fisk 🐎
+      Häst 🐖 Gris 🦁 Lejon 🐘 Elefant 🦆 Anka 🦅 Örn 🐍 Orm 🐙 Bläckfisk 🦈 Haj
+      🦜 Papegoja 🥒 Gurka 🥪 Smörgås 🧂 Salt 🥚 Ägg 🧼 Tvål 🦷 Tand 🚿 Dusch 🛁
+      Badkar 🚽 Toalett 🔑 Nyckel 🍣 Sushi 🍱 Bento 🍜 Ramen 🍕 Pizza 🎈 Ballong
+      🦊 Räv 🍇 Druva 🧊 Is 🍉 Vattenmelon 🍓 Jordgubbe 🍵 Te 🍦 Glass 🍕 Pizza
+      🍔 Hamburgare 🐇 Kanin 🐴 Häst 🐼 Panda 🐬 Delfin 🌆 Stad 🔴 Röd 🔵 Blå 🟢
+      Grön 🟡 Gul 🟠 Orange 🟣 Lila ⚪ Vit ⚫ Svart 🍃 Löv 🚌 Buss 🌧️ Regn 💨
+      Vind 🌙 Måne ⭐ Stjärna 🌈 Regnbåge ⏰ Klocka 📅 Kalender 💃 Dansa 🏃
+      Springa 📸 Kamera 🎒 Väska 🌹 Ros 🎁 Present 🎄 Julgran 🎃 Pumpa
+    </template>
+    <main>
+      <h2 id="current_emoji"></h2>
+      <h3 id="current_hint" data-size></h3>
+    </main>
+    <footer>
+      <nav id="abc_buttons" data-sort="abc">
+        <button data-value="A" data-type="V" data-qwerty="12">A</button>
+        <button data-value="B" data-type="K" data-qwerty="27">B</button>
+        <button data-value="C" data-type="K" data-qwerty="25">C</button>
+        <button data-value="D" data-type="K" data-qwerty="14">D</button>
+        <button data-value="E" data-type="V" data-qwerty="03">E</button>
+        <button data-value="F" data-type="K" data-qwerty="15">F</button>
+        <button data-value="G" data-type="K" data-qwerty="16">G</button>
+        <button data-value="H" data-type="K" data-qwerty="17">H</button>
+        <button data-value="I" data-type="V" data-qwerty="08">I</button>
+        <button data-value="J" data-type="K" data-qwerty="18">J</button>
+        <button data-value="K" data-type="K" data-qwerty="19">K</button>
+        <button data-value="L" data-type="K" data-qwerty="20">L</button>
+        <button data-value="M" data-type="K" data-qwerty="29">M</button>
+        <button data-value="N" data-type="K" data-qwerty="28">N</button>
+        <button data-value="O" data-type="V" data-qwerty="09">O</button>
+        <button data-value="P" data-type="K" data-qwerty="10">P</button>
+        <button data-value="Q" data-type="K" data-qwerty="01">Q</button>
+        <button data-value="R" data-type="K" data-qwerty="04">R</button>
+        <button data-value="S" data-type="K" data-qwerty="13">S</button>
+        <button data-value="T" data-type="K" data-qwerty="05">T</button>
+        <button data-value="U" data-type="V" data-qwerty="07">U</button>
+        <button data-value="V" data-type="K" data-qwerty="26">V</button>
+        <button data-value="W" data-type="K" data-qwerty="02">W</button>
+        <button data-value="X" data-type="K" data-qwerty="24">X</button>
+        <button data-value="Y" data-type="V" data-qwerty="06">Y</button>
+        <button data-value="Z" data-type="K" data-qwerty="23">Z</button>
+        <button data-value="Å" data-type="V" data-qwerty="11">Å</button>
+        <button data-value="Ä" data-type="V" data-qwerty="22">Ä</button>
+        <button data-value="Ö" data-type="V" data-qwerty="21">Ö</button>
+        <button data-value="?" data-type="O" data-qwerty="30">?</button>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
